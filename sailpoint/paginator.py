@@ -62,6 +62,7 @@ class Paginator:
         while True:
             print(f'Paginating call, offset = {offset}')
             results = search_api.search_post(search, None, increment)
+
             modified = modified + results
             
             print(f'Received {len(results)} results')
@@ -71,8 +72,8 @@ class Paginator:
                 return results
             else:
                 result = results[len(results) - 1]
-                if result[search.sort[0].strip('+-')] is not None:
-                    next_search_after = result[str(search.sort[0]).strip('+-')]
+                if getattr(result.actual_instance,search.sort[0].strip('+-')) is not None:
+                    next_search_after = str(getattr(result.actual_instance,str(search.sort[0]).strip('+-')))
                     search.search_after = [next_search_after]
                 else:
                     raise Exception('Search unexpectedly did not return a result we can search after!')

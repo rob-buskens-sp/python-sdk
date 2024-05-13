@@ -22,7 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.app_all_of_account import AppAllOfAccount
-from sailpoint.v3.models.reference import Reference
+from sailpoint.v3.models.reference1 import Reference1
 try:
     from typing import Self
 except ImportError:
@@ -34,7 +34,7 @@ class App(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
     name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
-    source: Optional[Reference] = None
+    source: Optional[Reference1] = None
     account: Optional[AppAllOfAccount] = None
     __properties: ClassVar[List[str]] = ["id", "name", "source", "account"]
 
@@ -95,7 +95,7 @@ class App(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
-            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "source": Reference1.from_dict(obj.get("source")) if obj.get("source") is not None else None,
             "account": AppAllOfAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None
         })
         return _obj

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **str** | The attribute key | [optional] 
-**name** | **str** | Human-readable display name of the attribute | [optional] 
-**value** | **str** | The attribute value | [optional] 
+**name** | **str** | The system (camel-cased) name of the identity attribute to bring in | 
+**requires_periodic_refresh** | **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to False]
+**input** | **Dict[str, object]** | This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI. | [optional] 
 
 ## Example
 

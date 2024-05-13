@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -30,10 +30,10 @@ class IdentityAttribute(BaseModel):
     """
     IdentityAttribute
     """ # noqa: E501
-    key: Optional[StrictStr] = Field(default=None, description="The attribute key")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the attribute")
-    value: Optional[StrictStr] = Field(default=None, description="The attribute value")
-    __properties: ClassVar[List[str]] = ["key", "name", "value"]
+    name: StrictStr = Field(description="The system (camel-cased) name of the identity attribute to bring in")
+    requires_periodic_refresh: Optional[StrictBool] = Field(default=False, description="A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process", alias="requiresPeriodicRefresh")
+    input: Optional[Dict[str, Any]] = Field(default=None, description="This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI.")
+    __properties: ClassVar[List[str]] = ["name", "requiresPeriodicRefresh", "input"]
 
     model_config = {
         "populate_by_name": True,
@@ -84,9 +84,9 @@ class IdentityAttribute(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "key": obj.get("key"),
             "name": obj.get("name"),
-            "value": obj.get("value")
+            "requiresPeriodicRefresh": obj.get("requiresPeriodicRefresh") if obj.get("requiresPeriodicRefresh") is not None else False,
+            "input": obj.get("input")
         })
         return _obj
 

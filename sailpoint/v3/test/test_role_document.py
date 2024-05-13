@@ -80,7 +80,6 @@ class TestRoleDocument(unittest.TestCase):
         else:
             return RoleDocument(
                 id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
                 type = 'identity',
         )
         """

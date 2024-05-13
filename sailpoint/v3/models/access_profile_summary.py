@@ -23,7 +23,7 @@ from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.display_reference import DisplayReference
 from sailpoint.v3.models.dto_type import DtoType
-from sailpoint.v3.models.reference import Reference
+from sailpoint.v3.models.reference1 import Reference1
 try:
     from typing import Self
 except ImportError:
@@ -38,7 +38,7 @@ class AccessProfileSummary(BaseModel):
     display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
     type: Optional[DtoType] = None
     description: Optional[StrictStr] = None
-    source: Optional[Reference] = None
+    source: Optional[Reference1] = None
     owner: Optional[DisplayReference] = None
     revocable: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["id", "name", "displayName", "type", "description", "source", "owner", "revocable"]
@@ -108,7 +108,7 @@ class AccessProfileSummary(BaseModel):
             "displayName": obj.get("displayName"),
             "type": obj.get("type"),
             "description": obj.get("description"),
-            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "source": Reference1.from_dict(obj.get("source")) if obj.get("source") is not None else None,
             "owner": DisplayReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "revocable": obj.get("revocable")
         })

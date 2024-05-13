@@ -7,7 +7,7 @@ The trigger that starts the workflow
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The trigger type | 
-**attributes** | **object** | Workflow Trigger Attributes. | 
+**attributes** | [**WorkflowTriggerAttributes**](WorkflowTriggerAttributes.md) |  | 
 
 ## Example
 

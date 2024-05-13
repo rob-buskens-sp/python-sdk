@@ -46,6 +46,7 @@ from sailpoint.beta.api.org_config_api import OrgConfigApi
 from sailpoint.beta.api.password_configuration_api import PasswordConfigurationApi
 from sailpoint.beta.api.password_dictionary_api import PasswordDictionaryApi
 from sailpoint.beta.api.password_management_api import PasswordManagementApi
+from sailpoint.beta.api.password_policies_api import PasswordPoliciesApi
 from sailpoint.beta.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.beta.api.personal_access_tokens_api import PersonalAccessTokensApi
 from sailpoint.beta.api.public_identities_config_api import PublicIdentitiesConfigApi
@@ -67,6 +68,7 @@ from sailpoint.beta.api.task_management_api import TaskManagementApi
 from sailpoint.beta.api.tenant_api import TenantApi
 from sailpoint.beta.api.transforms_api import TransformsApi
 from sailpoint.beta.api.triggers_api import TriggersApi
+from sailpoint.beta.api.ui_metadata_api import UIMetadataApi
 from sailpoint.beta.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi

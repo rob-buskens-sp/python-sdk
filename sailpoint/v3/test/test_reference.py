@@ -36,11 +36,13 @@ class TestReference(unittest.TestCase):
         model = Reference()
         if include_optional:
             return Reference(
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe'
+                id = 'Existing Transform',
+                requires_periodic_refresh = False,
+                input = {type=accountAttribute, attributes={attributeName=first_name, sourceName=Source}}
             )
         else:
             return Reference(
+                id = 'Existing Transform',
         )
         """
 

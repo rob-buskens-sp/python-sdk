@@ -21,7 +21,7 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool
 from pydantic import Field
-from sailpoint.v3.models.reference import Reference
+from sailpoint.v3.models.reference1 import Reference1
 try:
     from typing import Self
 except ImportError:
@@ -31,12 +31,12 @@ class Owns(BaseModel):
     """
     Owns
     """ # noqa: E501
-    sources: Optional[List[Reference]] = None
-    entitlements: Optional[List[Reference]] = None
-    access_profiles: Optional[List[Reference]] = Field(default=None, alias="accessProfiles")
-    roles: Optional[List[Reference]] = None
-    apps: Optional[List[Reference]] = None
-    governance_groups: Optional[List[Reference]] = Field(default=None, alias="governanceGroups")
+    sources: Optional[List[Reference1]] = None
+    entitlements: Optional[List[Reference1]] = None
+    access_profiles: Optional[List[Reference1]] = Field(default=None, alias="accessProfiles")
+    roles: Optional[List[Reference1]] = None
+    apps: Optional[List[Reference1]] = None
+    governance_groups: Optional[List[Reference1]] = Field(default=None, alias="governanceGroups")
     fallback_approver: Optional[StrictBool] = Field(default=None, alias="fallbackApprover")
     __properties: ClassVar[List[str]] = ["sources", "entitlements", "accessProfiles", "roles", "apps", "governanceGroups", "fallbackApprover"]
 
@@ -131,12 +131,12 @@ class Owns(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sources": [Reference.from_dict(_item) for _item in obj.get("sources")] if obj.get("sources") is not None else None,
-            "entitlements": [Reference.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
-            "accessProfiles": [Reference.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
-            "roles": [Reference.from_dict(_item) for _item in obj.get("roles")] if obj.get("roles") is not None else None,
-            "apps": [Reference.from_dict(_item) for _item in obj.get("apps")] if obj.get("apps") is not None else None,
-            "governanceGroups": [Reference.from_dict(_item) for _item in obj.get("governanceGroups")] if obj.get("governanceGroups") is not None else None,
+            "sources": [Reference1.from_dict(_item) for _item in obj.get("sources")] if obj.get("sources") is not None else None,
+            "entitlements": [Reference1.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
+            "accessProfiles": [Reference1.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
+            "roles": [Reference1.from_dict(_item) for _item in obj.get("roles")] if obj.get("roles") is not None else None,
+            "apps": [Reference1.from_dict(_item) for _item in obj.get("apps")] if obj.get("apps") is not None else None,
+            "governanceGroups": [Reference1.from_dict(_item) for _item in obj.get("governanceGroups")] if obj.get("governanceGroups") is not None else None,
             "fallbackApprover": obj.get("fallbackApprover")
         })
         return _obj

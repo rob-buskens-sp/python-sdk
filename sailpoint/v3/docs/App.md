@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the referenced object. | [optional] 
 **name** | **str** | The human readable name of the referenced object. | [optional] 
-**source** | [**Reference**](Reference.md) |  | [optional] 
+**source** | [**Reference1**](Reference1.md) |  | [optional] 
 **account** | [**AppAllOfAccount**](AppAllOfAccount.md) |  | [optional] 
 
 ## Example

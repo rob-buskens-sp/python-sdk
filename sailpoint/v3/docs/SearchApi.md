@@ -186,7 +186,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_get**
-> object search_get(index, id)
+> SearchDocument search_get(index, id)
 
 Get a Document by ID
 
@@ -201,6 +201,7 @@ Fetches a single document from the specified index, using the specified document
 import time
 import os
 import sailpoint.v3
+from sailpoint.v3.models.search_document import SearchDocument
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
@@ -247,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**SearchDocument**](SearchDocument.md)
 
 ### Authorization
 
@@ -273,7 +274,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_post**
-> List[object] search_post(search, offset=offset, limit=limit, count=count)
+> List[SearchDocument] search_post(search, offset=offset, limit=limit, count=count)
 
 Perform Search
 
@@ -289,6 +290,7 @@ import time
 import os
 import sailpoint.v3
 from sailpoint.v3.models.search import Search
+from sailpoint.v3.models.search_document import SearchDocument
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
@@ -339,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**List[object]**
+[**List[SearchDocument]**](SearchDocument.md)
 
 ### Authorization
 

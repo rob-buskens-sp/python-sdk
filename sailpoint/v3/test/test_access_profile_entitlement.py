@@ -41,7 +41,7 @@ class TestAccessProfileEntitlement(unittest.TestCase):
                 display_name = 'John Q. Doe',
                 type = 'IDENTITY',
                 description = '',
-                source = sailpoint.v3.models.reference.Reference(
+                source = sailpoint.v3.models.reference_1.Reference_1(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'John Doe', ),
                 privileged = False,

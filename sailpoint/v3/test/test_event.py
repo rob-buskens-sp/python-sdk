@@ -60,7 +60,6 @@ class TestEvent(unittest.TestCase):
         else:
             return Event(
                 id = '2c91808375d8e80a0175e1f88a575222',
-                name = 'john.doe',
                 type = 'identity',
         )
         """

@@ -38,7 +38,7 @@ class TestApp(unittest.TestCase):
             return App(
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'John Doe',
-                source = sailpoint.v3.models.reference.Reference(
+                source = sailpoint.v3.models.reference_1.Reference_1(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'John Doe', ),
                 account = sailpoint.v3.models.app_all_of_account.App_allOf_account(

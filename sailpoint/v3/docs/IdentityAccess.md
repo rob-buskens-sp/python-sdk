@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **display_name** | **str** |  | [optional] 
 **type** | [**DtoType**](DtoType.md) |  | [optional] 
 **description** | **str** |  | [optional] 
-**source** | [**Reference**](Reference.md) |  | [optional] 
+**source** | [**Reference1**](Reference1.md) |  | [optional] 
 **owner** | [**DisplayReference**](DisplayReference.md) |  | [optional] 
 **revocable** | **bool** |  | [optional] 
 **privileged** | **bool** |  | [optional] 

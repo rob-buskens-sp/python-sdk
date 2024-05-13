@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
 from typing_extensions import Annotated
+from sailpoint.beta.models.transform_attributes import TransformAttributes
 try:
     from typing import Self
 except ImportError:
@@ -33,7 +34,7 @@ class TransformRead(BaseModel):
     """ # noqa: E501
     name: Annotated[str, Field(min_length=1, strict=True, max_length=50)] = Field(description="Unique name of this transform")
     type: StrictStr = Field(description="The type of transform operation")
-    attributes: Optional[Dict[str, Any]] = Field(description="Meta-data about the transform. Values in this list are specific to the type of transform to be executed.")
+    attributes: Optional[TransformAttributes]
     id: StrictStr = Field(description="Unique ID of this transform")
     internal: StrictBool = Field(description="Indicates whether this is an internal SailPoint-created transform or a customer-created transform")
     __properties: ClassVar[List[str]] = ["name", "type", "attributes", "id", "internal"]
@@ -82,6 +83,9 @@ class TransformRead(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of attributes
+        if self.attributes:
+            _dict['attributes'] = self.attributes.to_dict()
         # set to None if attributes (nullable) is None
         # and model_fields_set contains the field
         if self.attributes is None and "attributes" in self.model_fields_set:
@@ -101,7 +105,7 @@ class TransformRead(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "type": obj.get("type"),
-            "attributes": obj.get("attributes"),
+            "attributes": TransformAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None,
             "id": obj.get("id"),
             "internal": obj.get("internal") if obj.get("internal") is not None else False
         })

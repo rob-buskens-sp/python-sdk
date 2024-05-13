@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sources** | [**List[Reference]**](Reference.md) |  | [optional] 
-**entitlements** | [**List[Reference]**](Reference.md) |  | [optional] 
-**access_profiles** | [**List[Reference]**](Reference.md) |  | [optional] 
-**roles** | [**List[Reference]**](Reference.md) |  | [optional] 
-**apps** | [**List[Reference]**](Reference.md) |  | [optional] 
-**governance_groups** | [**List[Reference]**](Reference.md) |  | [optional] 
+**sources** | [**List[Reference1]**](Reference1.md) |  | [optional] 
+**entitlements** | [**List[Reference1]**](Reference1.md) |  | [optional] 
+**access_profiles** | [**List[Reference1]**](Reference1.md) |  | [optional] 
+**roles** | [**List[Reference1]**](Reference1.md) |  | [optional] 
+**apps** | [**List[Reference1]**](Reference1.md) |  | [optional] 
+**governance_groups** | [**List[Reference1]**](Reference1.md) |  | [optional] 
 **fallback_approver** | **bool** |  | [optional] 
 
 ## Example

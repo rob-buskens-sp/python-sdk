@@ -37,32 +37,32 @@ class TestOwns(unittest.TestCase):
         if include_optional:
             return Owns(
                 sources = [
-                    sailpoint.v3.models.reference.Reference(
+                    sailpoint.v3.models.reference_1.Reference_1(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 entitlements = [
-                    sailpoint.v3.models.reference.Reference(
+                    sailpoint.v3.models.reference_1.Reference_1(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 access_profiles = [
-                    sailpoint.v3.models.reference.Reference(
+                    sailpoint.v3.models.reference_1.Reference_1(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 roles = [
-                    sailpoint.v3.models.reference.Reference(
+                    sailpoint.v3.models.reference_1.Reference_1(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 apps = [
-                    sailpoint.v3.models.reference.Reference(
+                    sailpoint.v3.models.reference_1.Reference_1(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 governance_groups = [
-                    sailpoint.v3.models.reference.Reference(
+                    sailpoint.v3.models.reference_1.Reference_1(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],

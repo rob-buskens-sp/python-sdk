@@ -88,12 +88,12 @@ class TestIdentityDocument(unittest.TestCase):
                 owns = [
                     sailpoint.v3.models.owns.Owns(
                         sources = [
-                            sailpoint.v3.models.reference.Reference(
+                            sailpoint.v3.models.reference_1.Reference_1(
                                 id = '2c91808568c529c60168cca6f90c1313', 
                                 name = 'John Doe', )
                             ], 
                         entitlements = [
-                            sailpoint.v3.models.reference.Reference(
+                            sailpoint.v3.models.reference_1.Reference_1(
                                 id = '2c91808568c529c60168cca6f90c1313', 
                                 name = 'John Doe', )
                             ], 
@@ -117,7 +117,6 @@ class TestIdentityDocument(unittest.TestCase):
         else:
             return IdentityDocument(
                 id = '2c91808568c529c60168cca6f90c1313',
-                name = 'John Doe',
                 type = 'identity',
         )
         """

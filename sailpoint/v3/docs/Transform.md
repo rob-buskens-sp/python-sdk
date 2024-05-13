@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Unique name of this transform | 
 **type** | **str** | The type of transform operation | 
-**attributes** | **object** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
+**attributes** | [**TransformAttributes**](TransformAttributes.md) |  | 
 
 ## Example
 

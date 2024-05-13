@@ -38,7 +38,7 @@ class TestTransformRead(unittest.TestCase):
             return TransformRead(
                 name = 'Timestamp To Date',
                 type = 'dateFormat',
-                attributes = sailpoint.v3.models.attributes.attributes(),
+                attributes = None,
                 id = '2cd78adghjkja34jh2b1hkjhasuecd',
                 internal = False
             )
@@ -46,7 +46,7 @@ class TestTransformRead(unittest.TestCase):
             return TransformRead(
                 name = 'Timestamp To Date',
                 type = 'dateFormat',
-                attributes = sailpoint.v3.models.attributes.attributes(),
+                attributes = None,
                 id = '2cd78adghjkja34jh2b1hkjhasuecd',
                 internal = False,
         )

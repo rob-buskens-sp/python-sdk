@@ -21,7 +21,7 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
-from sailpoint.v3.models.identity_attribute import IdentityAttribute
+from sailpoint.v3.models.identity_attribute1 import IdentityAttribute1
 from sailpoint.v3.models.identity_reference import IdentityReference
 try:
     from typing import Self
@@ -39,7 +39,7 @@ class PublicIdentity(BaseModel):
     status: Optional[StrictStr] = Field(default=None, description="The lifecycle status for the identity")
     identity_state: Optional[StrictStr] = Field(default=None, description="The current state of the identity, which determines how Identity Security Cloud interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features. ", alias="identityState")
     manager: Optional[IdentityReference] = None
-    attributes: Optional[List[IdentityAttribute]] = Field(default=None, description="The public identity attributes of the identity")
+    attributes: Optional[List[IdentityAttribute1]] = Field(default=None, description="The public identity attributes of the identity")
     __properties: ClassVar[List[str]] = ["id", "name", "alias", "email", "status", "identityState", "manager", "attributes"]
 
     @field_validator('identity_state')
@@ -138,7 +138,7 @@ class PublicIdentity(BaseModel):
             "status": obj.get("status"),
             "identityState": obj.get("identityState"),
             "manager": IdentityReference.from_dict(obj.get("manager")) if obj.get("manager") is not None else None,
-            "attributes": [IdentityAttribute.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None
+            "attributes": [IdentityAttribute1.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None
         })
         return _obj
 

@@ -21,7 +21,9 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
+from sailpoint.v3.models.actor_type import ActorType
 from sailpoint.v3.models.document_type import DocumentType
+from sailpoint.v3.models.target_type import TargetType
 try:
     from typing import Self
 except ImportError:
@@ -38,8 +40,8 @@ class EventDocument(BaseModel):
     synced: Optional[StrictStr] = Field(default=None, description="ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. ")
     action: Optional[StrictStr] = Field(default=None, description="Name of the event as it's displayed in audit reports.")
     type: Optional[StrictStr] = Field(default=None, description="Event type. Refer to [Event Types](https://documentation.sailpoint.com/saas/help/search/index.html#event-types) for a list of event types and their meanings.")
-    actor: Optional[StrictStr] = Field(default=None, description="Name of the actor that generated the event.")
-    target: Optional[StrictStr] = Field(default=None, description="Name of the target, or recipient, of the event.")
+    actor: Optional[ActorType] = None
+    target: Optional[TargetType] = None
     stack: Optional[StrictStr] = Field(default=None, description="The event's stack.")
     tracking_number: Optional[StrictStr] = Field(default=None, description="ID of the group of events.", alias="trackingNumber")
     ip_address: Optional[StrictStr] = Field(default=None, description="Target system's IP address.", alias="ipAddress")
@@ -88,6 +90,12 @@ class EventDocument(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of actor
+        if self.actor:
+            _dict['actor'] = self.actor.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of target
+        if self.target:
+            _dict['target'] = self.target.to_dict()
         # set to None if created (nullable) is None
         # and model_fields_set contains the field
         if self.created is None and "created" in self.model_fields_set:
@@ -112,8 +120,8 @@ class EventDocument(BaseModel):
             "synced": obj.get("synced"),
             "action": obj.get("action"),
             "type": obj.get("type"),
-            "actor": obj.get("actor"),
-            "target": obj.get("target"),
+            "actor": ActorType.from_dict(obj.get("actor")) if obj.get("actor") is not None else None,
+            "target": TargetType.from_dict(obj.get("target")) if obj.get("target") is not None else None,
             "stack": obj.get("stack"),
             "trackingNumber": obj.get("trackingNumber"),
             "ipAddress": obj.get("ipAddress"),

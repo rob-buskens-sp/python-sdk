@@ -47,7 +47,7 @@ class TestPublicIdentity(unittest.TestCase):
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Thomas Edison', ),
                 attributes = [
-                    sailpoint.v3.models.identity_attribute.IdentityAttribute(
+                    sailpoint.v3.models.identity_attribute_1.IdentityAttribute_1(
                         key = 'country', 
                         name = 'Country', 
                         value = 'US', )

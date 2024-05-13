@@ -105,6 +105,41 @@ class IdentityAccess(BaseModel):
         error_messages = []
         match = 0
 
+        # use oneOf discriminator to lookup the data type
+        _data_type = json.loads(json_str).get("type")
+        if not _data_type:
+            raise ValueError("Failed to lookup data type from the field `type` in the input.")
+
+        # check if data type is `AccessProfileSummary`
+        if _data_type == "ACCESS_PROFILE":
+            instance.actual_instance = AccessProfileSummary.from_json(json_str)
+            return instance
+
+        # check if data type is `AccessProfileEntitlement`
+        if _data_type == "ENTITLEMENT":
+            instance.actual_instance = AccessProfileEntitlement.from_json(json_str)
+            return instance
+
+        # check if data type is `AccessProfileRole`
+        if _data_type == "ROLE":
+            instance.actual_instance = AccessProfileRole.from_json(json_str)
+            return instance
+
+        # check if data type is `AccessProfileEntitlement`
+        if _data_type == "AccessProfileEntitlement":
+            instance.actual_instance = AccessProfileEntitlement.from_json(json_str)
+            return instance
+
+        # check if data type is `AccessProfileRole`
+        if _data_type == "AccessProfileRole":
+            instance.actual_instance = AccessProfileRole.from_json(json_str)
+            return instance
+
+        # check if data type is `AccessProfileSummary`
+        if _data_type == "AccessProfileSummary":
+            instance.actual_instance = AccessProfileSummary.from_json(json_str)
+            return instance
+
         # deserialize data into AccessProfileSummary
         try:
             instance.actual_instance = AccessProfileSummary.from_json(json_str)

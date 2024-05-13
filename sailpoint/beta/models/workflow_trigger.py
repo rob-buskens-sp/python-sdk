@@ -21,6 +21,7 @@ import json
 from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
+from sailpoint.beta.models.workflow_trigger_attributes import WorkflowTriggerAttributes
 try:
     from typing import Self
 except ImportError:
@@ -31,7 +32,7 @@ class WorkflowTrigger(BaseModel):
     The trigger that starts the workflow
     """ # noqa: E501
     type: StrictStr = Field(description="The trigger type")
-    attributes: Dict[str, Any] = Field(description="Workflow Trigger Attributes.")
+    attributes: WorkflowTriggerAttributes
     __properties: ClassVar[List[str]] = ["type", "attributes"]
 
     @field_validator('type')
@@ -78,6 +79,9 @@ class WorkflowTrigger(BaseModel):
             },
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of attributes
+        if self.attributes:
+            _dict['attributes'] = self.attributes.to_dict()
         return _dict
 
     @classmethod
@@ -91,7 +95,7 @@ class WorkflowTrigger(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "attributes": obj.get("attributes")
+            "attributes": WorkflowTriggerAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None
         })
         return _obj
 

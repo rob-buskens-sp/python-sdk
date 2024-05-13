@@ -36,12 +36,13 @@ class TestIdentityAttribute(unittest.TestCase):
         model = IdentityAttribute()
         if include_optional:
             return IdentityAttribute(
-                key = 'country',
-                name = 'Country',
-                value = 'US'
+                name = 'email',
+                requires_periodic_refresh = False,
+                input = {type=accountAttribute, attributes={attributeName=first_name, sourceName=Source}}
             )
         else:
             return IdentityAttribute(
+                name = 'email',
         )
         """
 

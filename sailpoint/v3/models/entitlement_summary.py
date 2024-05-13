@@ -22,7 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.dto_type import DtoType
-from sailpoint.v3.models.reference import Reference
+from sailpoint.v3.models.reference1 import Reference1
 try:
     from typing import Self
 except ImportError:
@@ -37,7 +37,7 @@ class EntitlementSummary(BaseModel):
     display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
     type: Optional[DtoType] = None
     description: Optional[StrictStr] = None
-    source: Optional[Reference] = None
+    source: Optional[Reference1] = None
     privileged: Optional[StrictBool] = None
     attribute: Optional[StrictStr] = None
     value: Optional[StrictStr] = None
@@ -106,7 +106,7 @@ class EntitlementSummary(BaseModel):
             "displayName": obj.get("displayName"),
             "type": obj.get("type"),
             "description": obj.get("description"),
-            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "source": Reference1.from_dict(obj.get("source")) if obj.get("source") is not None else None,
             "privileged": obj.get("privileged"),
             "attribute": obj.get("attribute"),
             "value": obj.get("value"),

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **display_name** | **str** |  | [optional] 
 **type** | [**DtoType**](DtoType.md) |  | [optional] 
 **description** | **str** |  | [optional] 
-**source** | [**Reference**](Reference.md) |  | [optional] 
+**source** | [**Reference1**](Reference1.md) |  | [optional] 
 **privileged** | **bool** |  | [optional] 
 **attribute** | **str** |  | [optional] 
 **value** | **str** |  | [optional] 

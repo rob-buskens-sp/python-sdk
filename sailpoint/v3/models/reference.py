@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
     from typing import Self
@@ -30,9 +30,10 @@ class Reference(BaseModel):
     """
     Reference
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(default=None, description="The human readable name of the referenced object.")
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    id: StrictStr = Field(description="This ID specifies the name of the pre-existing transform which you want to use within your current transform")
+    requires_periodic_refresh: Optional[StrictBool] = Field(default=False, description="A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process", alias="requiresPeriodicRefresh")
+    input: Optional[Dict[str, Any]] = Field(default=None, description="This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI.")
+    __properties: ClassVar[List[str]] = ["id", "requiresPeriodicRefresh", "input"]
 
     model_config = {
         "populate_by_name": True,
@@ -84,7 +85,8 @@ class Reference(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "name": obj.get("name")
+            "requiresPeriodicRefresh": obj.get("requiresPeriodicRefresh") if obj.get("requiresPeriodicRefresh") is not None else False,
+            "input": obj.get("input")
         })
         return _obj
 

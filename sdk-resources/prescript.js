@@ -78,12 +78,12 @@ const fixFiles = function (myArray) {
     }
 
     // remove the complex search schema
-    if (file.includes(path.join("documents", "SearchDocument.yaml"))) {
-          fileOut.push("type: object");
-          rawDataArra = fileOut.slice();
-          fileOut = [];
-          madeChange = true;
-    }
+    // if (file.includes(path.join("documents", "SearchDocument.yaml"))) {
+    //       fileOut.push("type: object");
+    //       rawDataArra = fileOut.slice();
+    //       fileOut = [];
+    //       madeChange = true;
+    // }
   
   
   
